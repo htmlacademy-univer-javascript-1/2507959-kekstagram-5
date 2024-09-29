@@ -3,7 +3,7 @@ const lineLength = function(line, linelength){
 };
 
 lineLength('проверяемая строка', 25);
-lineLength('sdss',3);
+lineLength('sds',3);
 
 const palindrom = function(line){
   const normalLine = (line.replaceAll(' ','')).toLowerCase();
