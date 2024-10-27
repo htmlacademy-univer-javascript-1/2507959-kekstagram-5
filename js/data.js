@@ -41,4 +41,4 @@ const generatePhotos = () => {
   return photos;
 };
 
-export {generatePhotos};
+export default {generatePhotos};
