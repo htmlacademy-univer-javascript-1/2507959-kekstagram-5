@@ -26,19 +26,18 @@ const generateComment = function () {
   return generateComments;
 };
 
-const generatePhotos = () => {
+export const generatePhotos = () => {
   const photos = [];
-  for (let i = 0; i <= 25; i++){
+  for (let i = 0; i <= 25; i++) {
     const photo = {
       id: i,
       url: `photos/${i}.jpg`,
       description: `Это моя любимая фотография №${i}`,
-      likes:getRandomInt(15,200),
-      comments: generateComment()
+      likes: getRandomInt(15, 200),
+      comments: generateComment(),
     };
     photos.push(photo);
   }
   return photos;
 };
 
-export default {generatePhotos};
