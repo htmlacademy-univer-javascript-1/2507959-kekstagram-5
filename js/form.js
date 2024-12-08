@@ -1,5 +1,6 @@
 import { isEscapeKey } from './util.js';
-
+const imgUpload = document.querySelector('.img-upload__preview');
+const scaleValue = document.querySelector('.scale__control--value');
 const overlay = document.querySelector('.img-upload__overlay');
 const file = document.querySelector('.img-upload__input');
 const cancel = document.querySelector('.img-upload__cancel');
@@ -30,6 +31,11 @@ function formClose() {
   form.reset();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
+  file.value = '';
+  description.value = '';
+  hashtag.value = '';
+  imgUpload.style.transform = 'scale(1)';
+  scaleValue.value = '100%';
   document.removeEventListener('keydown', handleKeydown);
 }
 
