@@ -15,6 +15,7 @@ const commentListStep = 5;
 let currentComments = [];
 let currentCommentsCount = 0;
 
+
 function fillBigPicture(picture, comments) {
   bigPicImg.src = picture.querySelector('.picture__img').src;
   likesCount.textContent = picture.querySelector('.picture__likes').textContent;
