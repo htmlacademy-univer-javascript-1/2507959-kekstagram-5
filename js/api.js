@@ -1,25 +1,28 @@
-const url = 'https://29.javascript.htmlacademy.pro/kekstagram';
+const BASE_URL = 'https://29.javascript.htmlacademy.pro/kekstagram';
 
-const getData = (load, fail) => {
-  fetch(`${url}/data`)
+
+const getPhotos = (onLoad, onFail) => {
+  fetch(`${BASE_URL}/data`, {
+    method: 'GET',
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error();
       }
       return response.json();
     })
-    .then(load)
-    .catch(fail);
+    .then(onLoad)
+    .catch(onFail);
 };
 
-const sendData = (load, fail, body) => {
-  fetch(url, {
+
+const setPhoto = (onLoad, onFail, body) => {
+  fetch(`${BASE_URL}`, {
     method: 'POST',
     body: body,
   })
-    .then(load)
-    .catch(fail);
+    .then(onLoad)
+    .catch(onFail);
 };
 
-export {getData, sendData};
-
+export {getPhotos, setPhoto};

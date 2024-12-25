@@ -1,4 +1,2 @@
-import './drawer.js';
-import './api.js';
-import './util.js';
-
+import {renderPhotos} from './drawer.js';
+renderPhotos();
