@@ -15,6 +15,7 @@ const getPhotos = (onLoad, onFail) => {
     .catch(onFail);
 };
 
+
 const setPhoto = (onLoad, onFail, body) => {
   fetch(`${BASE_URL}`, {
     method: 'POST',
