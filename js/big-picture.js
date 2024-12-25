@@ -1,4 +1,4 @@
-import onEscapePress from './util.js';
+import { onEscapePress } from './util.js';
 
 const body = document.querySelector('body');
 const bigPicture = document.querySelector('.big-picture');
@@ -9,7 +9,7 @@ const commentsLoader = bigPicture.querySelector('.comments-loader');
 const commentsCount = bigPicture.querySelector('.comments-count');
 const socialComments = bigPicture.querySelector('.social__comments');
 const socialCaption = bigPicture.querySelector('.social__caption');
-const commentTemplate = bigPicture.querySelector('.social__comment').cloneNode(true);
+const commentTemplate = bigPicture.querySelector('.social__comment').cloneNode(true); // Переименовал для ясности
 const closeButton = bigPicture.querySelector('.big-picture__cancel');
 const commentListStep = 5;
 let currentComments = [];
@@ -19,7 +19,7 @@ let currentCommentsCount = 0;
 function fillBigPicture(picture, comments) {
   bigPicImg.src = picture.querySelector('.picture__img').src;
   likesCount.textContent = picture.querySelector('.picture__likes').textContent;
-  socialCaption.textContent = picture.description;
+  socialCaption.textContent = picture.querySelector('.picture__img').alt;
   commentsCount.textContent = comments.length;
   currentComments = comments;
   currentCommentsCount = 0;
@@ -28,7 +28,8 @@ function fillBigPicture(picture, comments) {
   commentsLoader.classList.toggle('hidden', comments.length <= commentListStep);
   bigPicture.classList.remove('hidden');
   body.classList.add('modal-open');
-  document.addEventListener('keydown', (evt) => onEscapePress(evt, closeBigPicture));
+  document.addEventListener('keydown', onEscapePress);
+
 }
 
 function fillComments() {
@@ -50,7 +51,7 @@ function fillComments() {
 function closeBigPicture() {
   bigPicture.classList.add('hidden');
   body.classList.remove('modal-open');
-  document.removeEventListener('keydown', (evt) => onEscapePress(evt, closeBigPicture));
+  document.removeEventListener('keydown', onEscapePress);
   socialComments.innerHTML = '';
   currentComments = [];
   currentCommentsCount = 0;
@@ -69,5 +70,7 @@ function openBigPicture(picture, comments) {
 closeButton.addEventListener('click', () => {
   closeBigPicture();
 });
+
+document.addEventListener('keydown', onEscapePress(closeBigPicture));
 
 export { openBigPicture };
