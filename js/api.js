@@ -1,5 +1,13 @@
 const url = 'https://29.javascript.htmlacademy.pro/kekstagram';
 
+const sendData = (load, fail, body) => {
+  fetch(`${url}`, {
+    method: 'POST',
+    body: body,
+  })
+    .then(load)
+    .catch(fail);
+};
 
 const getData = (load, fail) => {
   fetch(`${url}/data`, {
@@ -11,16 +19,6 @@ const getData = (load, fail) => {
       }
       return response.json();
     })
-    .then(load)
-    .catch(fail);
-};
-
-
-const sendData = (load, fail, body) => {
-  fetch(`${url}`, {
-    method: 'POST',
-    body: body,
-  })
     .then(load)
     .catch(fail);
 };

@@ -1,5 +1,7 @@
 import { isEscapeKey } from './util.js';
-
+const commentListStep = 5;
+let currentComments = [];
+let currentCommentsCount = 0;
 const body = document.querySelector('body');
 const bigPicture = document.querySelector('.big-picture');
 const bigPicImg = bigPicture.querySelector('.big-picture__img img');
@@ -12,9 +14,6 @@ const socialCaption = bigPicture.querySelector('.social__caption');
 const commentTemplate = bigPicture.querySelector('.social__comment').cloneNode(true);
 const closeButton = bigPicture.querySelector('.big-picture__cancel');
 
-const commentListStep = 5;
-let currentComments = [];
-let currentCommentsCount = 0;
 
 function fillBigPicture(pictureElement, comments) {
   bigPicImg.src = pictureElement.querySelector('.picture__img').src;
