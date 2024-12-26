@@ -3,6 +3,7 @@ import { debounce } from './util.js';
 import { getData } from './api.js';
 import { displayLoadError } from './messages.js';
 
+let photos;
 const RANDOM_PHOTOS_LIMIT = 10;
 const TIMEOUT = 500;
 const FilterType = {
@@ -11,7 +12,6 @@ const FilterType = {
   DISCUSSED: 'discussed',
 };
 
-let photos;
 const imgFiltersElement = document.querySelector('.img-filters');
 const filterButtons = imgFiltersElement.querySelectorAll('.img-filters__button');
 const filterDefaultButton = imgFiltersElement.querySelector('#filter-default');
