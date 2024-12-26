@@ -15,12 +15,10 @@ const createPhotoElement = (photo) => {
   pictureLikes.textContent = photo.likes;
   pictureComments.textContent = photo.comments.length;
 
-
   pictureElement.addEventListener('click', (evt) => {
     evt.preventDefault();
     openBigPicture(pictureElement, photo.comments);
   });
-
 
   return pictureElement;
 };

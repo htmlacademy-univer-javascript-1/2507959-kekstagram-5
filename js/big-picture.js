@@ -11,6 +11,7 @@ const socialComments = bigPicture.querySelector('.social__comments');
 const socialCaption = bigPicture.querySelector('.social__caption');
 const commentTemplate = bigPicture.querySelector('.social__comment').cloneNode(true);
 const closeButton = bigPicture.querySelector('.big-picture__cancel');
+
 const commentListStep = 5;
 let currentComments = [];
 let currentCommentsCount = 0;
@@ -18,7 +19,7 @@ let currentCommentsCount = 0;
 function fillBigPicture(pictureElement, comments) {
   bigPicImg.src = pictureElement.querySelector('.picture__img').src;
   likesCount.textContent = pictureElement.querySelector('.picture__likes').textContent;
-  socialCaption.textContent = pictureElement.querySelector('.picture__img').alt; // Используем alt как описание
+  socialCaption.textContent = pictureElement.querySelector('.picture__img').alt;
   commentsCount.textContent = comments.length;
   currentComments = comments;
   currentCommentsCount = 0;

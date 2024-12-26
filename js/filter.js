@@ -18,7 +18,6 @@ const filterDefaultButton = imgFiltersElement.querySelector('#filter-default');
 const filterRandomButton = imgFiltersElement.querySelector('#filter-random');
 const filterDiscussedButton = imgFiltersElement.querySelector('#filter-discussed');
 
-
 const showFilters = () => {
   imgFiltersElement.classList.remove('img-filters--inactive');
 };
