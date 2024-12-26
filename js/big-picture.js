@@ -29,7 +29,6 @@ function fillBigPicture(pictureElement, comments) {
   body.classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
 }
-
 function fillComments() {
   const shownComments = currentComments.slice(currentCommentsCount, currentCommentsCount + commentListStep);
   const fragment = document.createDocumentFragment();
@@ -54,21 +53,16 @@ function closeBigPicture() {
   currentComments = [];
   currentCommentsCount = 0;
 }
-
+function newCommentCount() {
+  commentCountBlock.textContent = `${currentCommentsCount} из ${currentComments.length} комментариев`;
+}
 function onDocumentKeydown(evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closeBigPicture();
   }
 }
-
-function newCommentCount() {
-  commentCountBlock.textContent = `${currentCommentsCount} из ${currentComments.length} комментариев`;
-}
-
 commentsLoader.addEventListener('click', fillComments);
-
-
 function openBigPicture(pictureElement, comments) {
   fillBigPicture(pictureElement, comments);
 }
