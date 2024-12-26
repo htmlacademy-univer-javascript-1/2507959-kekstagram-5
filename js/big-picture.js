@@ -1,4 +1,4 @@
-import onEscapePress from './util.js';
+import { isEscapeKey } from './util.js';
 
 const body = document.querySelector('body');
 const bigPicture = document.querySelector('.big-picture');
@@ -15,10 +15,10 @@ const commentListStep = 5;
 let currentComments = [];
 let currentCommentsCount = 0;
 
-function fillBigPicture(picture, comments) {
-  bigPicImg.src = picture.querySelector('.picture__img').src;
-  likesCount.textContent = picture.querySelector('.picture__likes').textContent;
-  socialCaption.textContent = picture.description;
+function fillBigPicture(pictureElement, comments) {
+  bigPicImg.src = pictureElement.querySelector('.picture__img').src;
+  likesCount.textContent = pictureElement.querySelector('.picture__likes').textContent;
+  socialCaption.textContent = pictureElement.querySelector('.picture__img').alt; // Используем alt как описание
   commentsCount.textContent = comments.length;
   currentComments = comments;
   currentCommentsCount = 0;
@@ -27,7 +27,7 @@ function fillBigPicture(picture, comments) {
   commentsLoader.classList.toggle('hidden', comments.length <= commentListStep);
   bigPicture.classList.remove('hidden');
   body.classList.add('modal-open');
-  document.addEventListener('keydown', (evt) => onEscapePress(evt, closeBigPicture));
+  document.addEventListener('keydown', onDocumentKeydown);
 }
 
 function fillComments() {
@@ -49,10 +49,17 @@ function fillComments() {
 function closeBigPicture() {
   bigPicture.classList.add('hidden');
   body.classList.remove('modal-open');
-  document.removeEventListener('keydown', (evt) => onEscapePress(evt, closeBigPicture));
+  document.removeEventListener('keydown', onDocumentKeydown);
   socialComments.innerHTML = '';
   currentComments = [];
   currentCommentsCount = 0;
+}
+
+function onDocumentKeydown(evt) {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeBigPicture();
+  }
 }
 
 function newCommentCount() {
@@ -61,8 +68,9 @@ function newCommentCount() {
 
 commentsLoader.addEventListener('click', fillComments);
 
-function openBigPicture(picture, comments) {
-  picture.addEventListener('click', () => fillBigPicture(picture, comments));
+
+function openBigPicture(pictureElement, comments) {
+  fillBigPicture(pictureElement, comments);
 }
 
 closeButton.addEventListener('click', () => {
